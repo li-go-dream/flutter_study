@@ -41,7 +41,26 @@ class PurchaserPage extends StatelessWidget {
           ),
         ),
       ),
-      body: Text('pruchaser'),
+      body: Column(
+        children: [
+          Container(
+            constraints: BoxConstraints(minWidth: double.infinity),
+            color: Color(int.parse('FF27C1A5', radix: 16)),
+            padding: const EdgeInsets.symmetric(
+              vertical: 4.0,
+              horizontal: 12.0,
+            ),
+            child: Container(
+              padding: const EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Text('111'),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
