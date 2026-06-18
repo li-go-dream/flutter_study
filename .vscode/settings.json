@@ -1,0 +1,20 @@
+{
+  // 启动调试时，始终自动打开调试控制台，方便查看程序输出
+  "debug.internalConsoleOptions": "openOnSessionStart",
+
+  // 以下设置仅对 Dart 文件生效
+  "[dart]": {
+    // 保存文件时自动格式化代码
+    "editor.formatOnSave": true,
+    // 输入分号(;)、花括号(})等字符后，自动格式化当前行
+    "editor.formatOnType": true,
+    // 在编辑区域第80列处显示一条垂直参考线，提醒你注意代码宽度
+    "editor.rulers": [80],
+    // 关闭VS Code默认的高亮相同词功能，避免干扰Dart扩展精确的高亮
+    "editor.selectionHighlight": false,
+    // 允许仅输入代码片段前缀（如 'for'）并按 Tab 键，即可展开预定义的代码模板
+    "editor.tabCompletion": "onlySnippets",
+    // 关闭基于文档词汇的补全，避免在注释或字符串中出现无关的单词建议，只使用Dart语言服务提供的精准补全
+    "editor.wordBasedSuggestions": "off"
+  }
+}
