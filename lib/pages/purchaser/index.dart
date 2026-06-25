@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:study/pages/purchaser/components/homeData.dart';
 
 class PurchaserPage extends StatelessWidget {
   const PurchaserPage({super.key});
@@ -6,7 +7,6 @@ class PurchaserPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).padding.top;
-    debugPrint('$height');
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: .fromHeight(height),
@@ -41,26 +41,7 @@ class PurchaserPage extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Container(
-            constraints: BoxConstraints(minWidth: double.infinity),
-            color: Color(int.parse('FF27C1A5', radix: 16)),
-            padding: const EdgeInsets.symmetric(
-              vertical: 4.0,
-              horizontal: 12.0,
-            ),
-            child: Container(
-              padding: const EdgeInsets.all(16.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Text('111'),
-            ),
-          ),
-        ],
-      ),
+      body: Column(children: [HomeData()]),
     );
   }
 }
