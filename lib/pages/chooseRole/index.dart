@@ -77,7 +77,8 @@ class ChooseRole extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      context.go(item['type'] as String);
+                      final type = item['type'] as String;
+                      context.go('$type/home');
                     },
                     child: Row(
                       children: [

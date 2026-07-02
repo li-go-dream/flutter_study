@@ -26,3 +26,10 @@ Map<String, String> userRoleType = {
   // 货车司机
   'DRIVER': 'driver',
 };
+
+class ListItem {
+  final String title;
+  final String type;
+  final bool hot;
+  ListItem({required this.title, required this.type, required this.hot});
+}
