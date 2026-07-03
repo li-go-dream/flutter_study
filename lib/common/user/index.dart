@@ -18,6 +18,8 @@
 // }
 
 // 用户角色类型
+import 'package:flutter/material.dart';
+
 Map<String, String> userRoleType = {
   /**bd */
   'BD': 'bd',
@@ -31,5 +33,13 @@ class ListItem {
   final String title;
   final String type;
   final bool hot;
-  ListItem({required this.title, required this.type, required this.hot});
+  final int? hotNumber;
+  final Widget page;
+  ListItem({
+    required this.title,
+    required this.type,
+    required this.hot,
+    required this.page,
+    this.hotNumber,
+  });
 }

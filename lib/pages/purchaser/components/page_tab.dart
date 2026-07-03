@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:study/common/user/index.dart';
 
-class HomeTab extends StatelessWidget {
+class PageTab extends StatelessWidget {
   final List<ListItem> list;
-  const HomeTab({super.key, required this.list});
+  const PageTab({super.key, required this.list});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,9 @@ class HomeTab extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: TabBarView(children: list.map((it) => it.page).toList()),
+            child: TabBarView(
+              children: list.map((it) => Text(it.title)).toList(),
+            ),
           ),
         ],
       ),

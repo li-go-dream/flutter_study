@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:study/pages/purchaser/components/home_data.dart';
 import 'package:study/pages/purchaser/components/home_tab.dart';
 import 'package:study/common/user/index.dart';
+import 'package:study/pages/purchaser/home/components/await_page.dart';
 
 class PurchaserHomePage extends StatefulWidget {
   const PurchaserHomePage({super.key});
@@ -12,9 +13,9 @@ class PurchaserHomePage extends StatefulWidget {
 
 class _PurchaserHomePageState extends State<PurchaserHomePage> {
   List<ListItem> tabList = [
-    ListItem(title: '商品待办', hot: true, type: 'await'),
-    ListItem(title: '供应商入驻', hot: false, type: 'await'),
-    ListItem(title: '订单发货', hot: false, type: 'await'),
+    ListItem(title: '商品待办', hot: true, type: 'await', page: const AwaitPage()),
+    ListItem(title: '供应商入驻', hot: false, type: 'await', page: Text('2')),
+    ListItem(title: '订单发货', hot: false, type: 'await', page: Text('3')),
   ];
 
   @override
@@ -57,7 +58,7 @@ class _PurchaserHomePageState extends State<PurchaserHomePage> {
       body: Column(
         children: [
           HomeData(),
-          HomeTab(list: tabList),
+          Flexible(child: HomeTab(list: tabList)),
         ],
       ),
     );
