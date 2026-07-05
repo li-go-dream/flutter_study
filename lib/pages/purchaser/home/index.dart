@@ -3,6 +3,8 @@ import 'package:study/pages/purchaser/components/home_data.dart';
 import 'package:study/pages/purchaser/components/home_tab.dart';
 import 'package:study/common/user/index.dart';
 import 'package:study/pages/purchaser/home/components/await_page.dart';
+import 'package:study/pages/purchaser/home/components/delivery_page.dart';
+import 'package:study/pages/purchaser/home/components/supplier_page.dart';
 
 class PurchaserHomePage extends StatefulWidget {
   const PurchaserHomePage({super.key});
@@ -14,8 +16,18 @@ class PurchaserHomePage extends StatefulWidget {
 class _PurchaserHomePageState extends State<PurchaserHomePage> {
   List<ListItem> tabList = [
     ListItem(title: '商品待办', hot: true, type: 'await', page: const AwaitPage()),
-    ListItem(title: '供应商入驻', hot: false, type: 'await', page: Text('2')),
-    ListItem(title: '订单发货', hot: false, type: 'await', page: Text('3')),
+    ListItem(
+      title: '供应商入驻',
+      hot: false,
+      type: 'supplier',
+      page: const SupplierPage(),
+    ),
+    ListItem(
+      title: '订单发货',
+      hot: false,
+      type: 'delivery',
+      page: const DeliveryPage(),
+    ),
   ];
 
   @override
