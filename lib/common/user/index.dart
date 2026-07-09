@@ -43,3 +43,22 @@ class ListItem {
     this.hotNumber,
   });
 }
+
+class WorkBenchItem {
+  final String title;
+  final String desc;
+  final String img;
+  final String url;
+  final Color color;
+  final double imgWidth;
+  final double imgHeight;
+  WorkBenchItem({
+    required this.title,
+    required this.desc,
+    required this.img,
+    required this.color,
+    required this.url,
+    this.imgWidth = 24.0,
+    this.imgHeight = 24.0,
+  });
+}

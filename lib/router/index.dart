@@ -46,6 +46,7 @@ final _router = GoRouter(
         return Scaffold(
           body: navigationShell,
           bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: Colors.white,
             currentIndex: navigationShell.currentIndex,
             onTap: (index) {
               navigationShell.goBranch(

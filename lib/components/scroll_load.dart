@@ -6,6 +6,7 @@ class ScrollLoad<T> extends StatefulWidget {
   final bool hasMore;
   final bool loading;
   final bool autoLoad;
+  final int color;
   final Widget Function(T item) renderItem;
 
   const ScrollLoad({
@@ -15,6 +16,7 @@ class ScrollLoad<T> extends StatefulWidget {
     this.hasMore = true,
     this.loading = false,
     this.autoLoad = false,
+    this.color = 0xffF8F8F8,
     required this.renderItem,
   });
 
@@ -49,15 +51,18 @@ class _ScrollLoadState extends State<ScrollLoad> {
     final loading = widget.loading;
     final hasMore = widget.hasMore;
     final renderItem = widget.renderItem;
-    return ListView.builder(
-      controller: _controller,
-      itemCount: list.length + ((loading || hasMore) ? 1 : 0),
-      itemBuilder: (context, index) {
-        if (index == list.length) {
-          return loading ? Text('加载中') : Text(hasMore ? '加载完成' : '');
-        }
-        return renderItem(list[index]);
-      },
+    return DecoratedBox(
+      decoration: BoxDecoration(color: Color(widget.color)),
+      child: ListView.builder(
+        controller: _controller,
+        itemCount: list.length + ((loading || hasMore) ? 1 : 0),
+        itemBuilder: (context, index) {
+          if (index == list.length) {
+            return loading ? Text('加载中') : Text(hasMore ? '加载完成' : '');
+          }
+          return renderItem(list[index]);
+        },
+      ),
     );
   }
 }
