@@ -27,3 +27,17 @@ Map<String, dynamic> _$GoodsToJson(Goods instance) => <String, dynamic>{
   'imageUrl': instance.imageUrl,
   'isUp': instance.isUp,
 };
+
+Suppliers _$SuppliersFromJson(Map<String, dynamic> json) => Suppliers(
+  id: json['id'] as String,
+  name: json['name'] as String,
+  tel: json['tel'] as String,
+  status: json['status'] as String,
+);
+
+Map<String, dynamic> _$SuppliersToJson(Suppliers instance) => <String, dynamic>{
+  'id': instance.id,
+  'name': instance.name,
+  'tel': instance.tel,
+  'status': instance.status,
+};

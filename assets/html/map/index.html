@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地图</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div id="map-container"></div>
+</body>
+<script type="text/javascript">
+    window._AMapSecurityConfig = {
+        securityJsCode: "b5e7d7222f677d2c19a128a86856940b",
+    };
+</script>
+<script src="./js/amap_loader.js"></script>
+<script>
+    AMapLoader.load({
+        key: "1f9d1e1720c09ba6feff5d415c0ffe3e", //申请好的Web端开发者 Key，调用 load 时必填
+        version: "2.0", //指定要加载的 JS API 的版本，缺省时默认为 1.4.15
+    })
+    .then((AMap) => {
+        const map = new AMap.Map("map-container", {
+            zoom: 11,
+            // resizeEnable: true
+        });
+        AMap.plugin('AMap.Geolocation', function () {
+            var geolocation = new AMap.Geolocation({
+                enableHighAccuracy: true, // 是否使用高精度定位，默认：true
+                timeout: 10000, // 设置定位超时时间，默认：无穷大
+                offset: [10, 20],  // 定位按钮的停靠位置的偏移量
+                zoomToAccuracy: true,  //  定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+                position: 'RB' //  定位按钮的排放位置,  RB表示右下
+            })
+            map.addControl(geolocation);
+            geolocation.getCurrentPosition();
+        })
+        map.on('click', (e) => {
+            console.log(e)
+        })
+    })
+    .catch((e) => {
+      console.error(e); //加载错误提示
+    });
+</script>
+</html>

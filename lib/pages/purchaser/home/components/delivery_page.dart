@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:study/components/scroll_load.dart';
+import 'package:study/pages/purchaser/components/delivery_item.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class DeliveryPage extends StatefulWidget {
@@ -12,6 +14,9 @@ class _DeliveryPageState extends State<StatefulWidget>
     with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
+  bool hasMore = true;
+  bool loading = false;
+  bool isloaded = false; // 是否加载过
 
   @override
   Widget build(BuildContext context) {
@@ -21,16 +26,28 @@ class _DeliveryPageState extends State<StatefulWidget>
       child: _buildContent(),
       onVisibilityChanged: (info) {
         // 当可见面积 > 10% 且未加载时，触发请求
-        // if (info.visibleFraction > 0.1 && !_isLoaded && !_isLoading) {
-        //   _fetchData();
-        // }
-        debugPrint(info.toString());
+        if (info.visibleFraction > 0.1 && !isloaded) {
+          isloaded = true;
+          debugPrint('订单发货加载中');
+        }
       },
     );
   }
 
   Widget _buildContent() {
-    return Text('发货');
+    return DecoratedBox(
+      decoration: BoxDecoration(color: Color(0xFF27C1A5)),
+      child: ScrollLoad(
+        borderradius: BorderRadius.vertical(top: Radius.circular(8)),
+        loading: loading,
+        hasMore: loading,
+        list: [1, 2, 3, 4],
+        loadFn: () {},
+        renderItem: (item) {
+          return const DeliveryItem();
+        },
+      ),
+    );
     // if (_isLoading) {
     //   return const Center(child: CircularProgressIndicator());
     // }

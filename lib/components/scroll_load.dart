@@ -7,6 +7,7 @@ class ScrollLoad<T> extends StatefulWidget {
   final bool loading;
   final bool autoLoad;
   final int color;
+  final BorderRadiusGeometry borderradius;
   final Widget Function(T item) renderItem;
 
   const ScrollLoad({
@@ -17,6 +18,7 @@ class ScrollLoad<T> extends StatefulWidget {
     this.loading = false,
     this.autoLoad = false,
     this.color = 0xffF8F8F8,
+    this.borderradius = BorderRadius.zero,
     required this.renderItem,
   });
 
@@ -51,17 +53,23 @@ class _ScrollLoadState extends State<ScrollLoad> {
     final loading = widget.loading;
     final hasMore = widget.hasMore;
     final renderItem = widget.renderItem;
-    return DecoratedBox(
-      decoration: BoxDecoration(color: Color(widget.color)),
-      child: ListView.builder(
-        controller: _controller,
-        itemCount: list.length + ((loading || hasMore) ? 1 : 0),
-        itemBuilder: (context, index) {
-          if (index == list.length) {
-            return loading ? Text('加载中') : Text(hasMore ? '加载完成' : '');
-          }
-          return renderItem(list[index]);
-        },
+    return ClipRRect(
+      borderRadius: widget.borderradius,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: Color(widget.color),
+          borderRadius: widget.borderradius,
+        ),
+        child: ListView.builder(
+          controller: _controller,
+          itemCount: list.length + ((loading || hasMore) ? 1 : 0),
+          itemBuilder: (context, index) {
+            if (index == list.length) {
+              return loading ? Text('加载中') : Text(hasMore ? '加载完成' : '');
+            }
+            return renderItem(list[index]);
+          },
+        ),
       ),
     );
   }
