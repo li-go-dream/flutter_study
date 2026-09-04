@@ -8,11 +8,13 @@ class DownSelect extends StatefulWidget {
   final String title;
   final String placeholder;
   final String type;
+  final int bgcolor;
   const DownSelect({
     super.key,
     this.title = '请选择',
     this.type = 'data',
     this.placeholder = '请选择',
+    this.bgcolor = 0xFFFFFFFF,
   });
 
   @override
@@ -120,7 +122,7 @@ class _DownSelectState extends State<DownSelect> {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Color(widget.bgcolor),
           borderRadius: BorderRadius.circular(4),
         ),
         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),

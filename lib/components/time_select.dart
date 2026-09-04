@@ -6,11 +6,11 @@ import 'package:flutter_datetime_picker_plus/src/datetime_picker_theme.dart'
 
 class TimeSelect extends StatefulWidget {
   final String placeholder;
-  late String? currentTime;
-  late String? minTime;
-  late String? maxTime;
+  final String? currentTime;
+  final String? minTime;
+  final String? maxTime;
   final Function? valChange;
-  TimeSelect({
+  const TimeSelect({
     super.key,
     this.placeholder = '请选择',
     this.currentTime,

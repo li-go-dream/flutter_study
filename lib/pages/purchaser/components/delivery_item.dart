@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:study/common/utils.dart';
 
 class DeliveryItem extends StatelessWidget {
   const DeliveryItem({super.key});
@@ -16,11 +16,6 @@ class DeliveryItem extends StatelessWidget {
       case 'detail':
         break;
     }
-  }
-
-  void makingCall(String tel) async {
-    final Uri launchUri = Uri(scheme: 'tel', path: tel);
-    launchUrl(launchUri);
   }
 
   @override

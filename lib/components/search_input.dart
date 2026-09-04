@@ -5,12 +5,14 @@ class SearchInput extends StatefulWidget {
   final String placeholder;
   final Function valueChange;
   final Color color;
+  final int btncolor;
 
   const SearchInput({
     super.key,
     this.initval = '',
     this.placeholder = '请输入',
     this.color = Colors.white,
+    this.btncolor = 0xFF27C1A5,
     required this.valueChange,
   });
 
@@ -59,7 +61,7 @@ class _SearchInputState extends State<SearchInput> {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: .w400,
-                  color: Color(0xFF27C1A5),
+                  color: Color(widget.btncolor),
                 ),
               ),
             ),

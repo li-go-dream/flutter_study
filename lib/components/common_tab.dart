@@ -9,6 +9,8 @@ class CommonTab extends StatefulWidget {
   final int initTab;
 
   final bool isScrollable;
+  final int indicatorColor;
+  final int labelColor;
 
   const CommonTab({
     super.key,
@@ -20,6 +22,8 @@ class CommonTab extends StatefulWidget {
     this.initTab = 0,
 
     this.isScrollable = false,
+    this.indicatorColor = 0xFF2FC3A8,
+    this.labelColor = 0xFF27C1A5,
   });
 
   @override
@@ -142,8 +146,8 @@ class _CommonTabState extends State<CommonTab>
 
         overlayColor: WidgetStateProperty.all(Colors.transparent),
 
-        indicator: const UnderlineTabIndicator(
-          borderSide: BorderSide(width: 3, color: Color(0xFF2FC3A8)),
+        indicator: UnderlineTabIndicator(
+          borderSide: BorderSide(width: 3, color: Color(widget.indicatorColor)),
 
           borderRadius: BorderRadius.all(Radius.circular(2)),
 
@@ -155,12 +159,12 @@ class _CommonTabState extends State<CommonTab>
 
         labelPadding: EdgeInsets.zero,
 
-        labelStyle: const TextStyle(
+        labelStyle: TextStyle(
           fontSize: 14,
 
           fontWeight: FontWeight.w500,
 
-          color: Color(0xFF27C1A5),
+          color: Color(widget.labelColor),
         ),
 
         unselectedLabelStyle: const TextStyle(

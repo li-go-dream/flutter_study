@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:study/common/user/index.dart';
+import 'package:study/components/page_bar.dart';
 
 class ChooseRole extends StatelessWidget {
   ChooseRole({super.key});
@@ -36,23 +37,27 @@ class ChooseRole extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(int.parse('FFF8F8F8', radix: 16)),
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_rounded),
-          onPressed: () => context.pop(),
-        ),
-        toolbarHeight: 44.0,
-        title: Text(
-          '请选择你的角色',
-          style: TextStyle(
-            fontSize: 16.0,
-            fontWeight: FontWeight.w600,
-            color: Color(int.parse('FF1D2129', radix: 16)),
-          ),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
+      appBar: PageBar(
+        title: '请选择你的角色',
+        decoration: BoxDecoration(color: Colors.white),
       ),
+      // appBar: AppBar(
+      //   leading: IconButton(
+      //     icon: Icon(Icons.arrow_back_ios_new_rounded),
+      //     onPressed: () => context.pop(),
+      //   ),
+      //   toolbarHeight: 44.0,
+      //   title: Text(
+      //     '请选择你的角色',
+      //     style: TextStyle(
+      //       fontSize: 16.0,
+      //       fontWeight: FontWeight.w600,
+      //       color: Color(int.parse('FF1D2129', radix: 16)),
+      //     ),
+      //   ),
+      //   centerTitle: true,
+      //   backgroundColor: Colors.white,
+      // ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -78,7 +83,7 @@ class ChooseRole extends StatelessWidget {
                     ),
                     onPressed: () {
                       final type = item['type'] as String;
-                      context.go('$type/home');
+                      context.push('$type/home');
                     },
                     child: Row(
                       children: [

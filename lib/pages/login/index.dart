@@ -40,7 +40,7 @@ class _LoginPage extends State<LoginPage> {
     if ((formKey.currentState as FormState).validate()) {
       debugPrint(userNameController.text);
       debugPrint(passwordController.text);
-      context.push('/chooseRole');
+      context.go('/chooseRole');
     }
   }
 
