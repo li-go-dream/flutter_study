@@ -11,19 +11,23 @@ class CommonTab extends StatefulWidget {
   final bool isScrollable;
   final int indicatorColor;
   final int labelColor;
+  final bool hasBottomBorder;
+  final TextStyle? labelStyle;
+  final TextStyle? selectlabelstyle;
+  final BoxDecoration? decoration;
 
   const CommonTab({
     super.key,
-
     required this.list,
-
     required this.tabChange,
-
     this.initTab = 0,
-
     this.isScrollable = false,
+    this.hasBottomBorder = true,
     this.indicatorColor = 0xFF2FC3A8,
     this.labelColor = 0xFF27C1A5,
+    this.labelStyle,
+    this.selectlabelstyle,
+    this.decoration,
   });
 
   @override
@@ -133,48 +137,41 @@ class _CommonTabState extends State<CommonTab>
     }
 
     return Container(
-      decoration: const BoxDecoration(
-        border: Border(bottom: BorderSide(width: 1, color: Color(0xFFF2F3F5))),
-      ),
+      decoration:
+          widget.decoration ??
+          BoxDecoration(
+            border: widget.hasBottomBorder
+                ? Border(bottom: BorderSide(width: 1, color: Color(0xFFF2F3F5)))
+                : Border(),
+          ),
 
       child: TabBar(
         controller: _controller,
-
         tabAlignment: widget.isScrollable ? TabAlignment.start : null,
-
         isScrollable: widget.isScrollable,
-
         overlayColor: WidgetStateProperty.all(Colors.transparent),
-
         indicator: UnderlineTabIndicator(
           borderSide: BorderSide(width: 3, color: Color(widget.indicatorColor)),
-
           borderRadius: BorderRadius.all(Radius.circular(2)),
-
           insets: EdgeInsets.symmetric(horizontal: 16),
         ),
-
         // indicatorSize: TabBarIndicatorSize.label,
         dividerHeight: 0,
-
         labelPadding: EdgeInsets.zero,
-
-        labelStyle: TextStyle(
-          fontSize: 14,
-
-          fontWeight: FontWeight.w500,
-
-          color: Color(widget.labelColor),
-        ),
-
-        unselectedLabelStyle: const TextStyle(
-          fontSize: 14,
-
-          fontWeight: FontWeight.w400,
-
-          color: Color(0xFF666666),
-        ),
-
+        labelStyle:
+            widget.selectlabelstyle ??
+            TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              color: Color(widget.labelColor),
+            ),
+        unselectedLabelStyle:
+            widget.labelStyle ??
+            const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              color: Color(0xFF666666),
+            ),
         tabs: widget.list.map(_buildTab).toList(),
       ),
     );

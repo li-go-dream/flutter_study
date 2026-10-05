@@ -26,7 +26,7 @@ class TabItem {
   final String name;
   final int number;
 
-  TabItem({required this.id, required this.name, required this.number});
+  TabItem({required this.id, required this.name, this.number = 0});
 }
 
 class OrderData {
@@ -90,4 +90,11 @@ class TaskItemData {
     required this.status,
     required this.type,
   });
+}
+
+class SelectDialogItem {
+  final String id;
+  final String name;
+
+  SelectDialogItem({required this.id, required this.name});
 }

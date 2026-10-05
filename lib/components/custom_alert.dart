@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image_picker_android/image_picker_android.dart';
 import 'package:image_picker_platform_interface/image_picker_platform_interface.dart';
+import 'package:study/common/data/index.dart';
 import 'package:study/common/dialog/index.dart';
 
 /// 问话弹窗 和bottomDialog不同的传参方式
@@ -274,6 +275,130 @@ Future<bool?> bottomDialog({
               );
             },
           ),
+        ),
+      );
+    },
+  );
+}
+
+/// 简单选择
+Future<SelectDialogItem?> selectItem({
+  required BuildContext content,
+  required List<SelectDialogItem> list,
+  String? title,
+  String? desc,
+}) {
+  return showModalBottomSheet(
+    backgroundColor: Colors.white,
+    useSafeArea: true,
+    useRootNavigator: true,
+    context: content,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+    ),
+    builder: (BuildContext context) {
+      return SafeArea(
+        child: Column(
+          mainAxisSize: .min,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+              width: .maxFinite,
+              child: Stack(
+                children: [
+                  if (title != null)
+                    SizedBox(
+                      width: .maxFinite,
+                      child: Column(
+                        mainAxisAlignment: .center,
+                        children: [
+                          Text(
+                            title,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF1D2129),
+                            ),
+                          ),
+                          if (desc != null)
+                            Text(
+                              desc,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFF999999),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  Positioned(
+                    right: 0,
+                    child: InkWell(
+                      onTap: () => Navigator.of(context).pop(),
+                      child: const Icon(
+                        Icons.close,
+                        size: 24,
+                        color: Color(0xFF000000),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            ...list.indexed.map((record) {
+              final (index, item) = record;
+              return Container(
+                key: Key(item.id),
+                decoration: BoxDecoration(
+                  border: Border(
+                    top: BorderSide(width: 1, color: const Color(0xFFF7F7F7)),
+                  ),
+                ),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop(item);
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                    child: Center(
+                      child: Text(
+                        item.name,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: .w400,
+                          color: Color.fromRGBO(0, 0, 0, 0.90),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            }),
+            Container(
+              height: 8,
+              width: double.infinity,
+              color: const Color(0xFFF7F7F7),
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 16),
+                child: Center(
+                  child: Text(
+                    '取消',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: .w400,
+                      color: Color.fromRGBO(0, 0, 0, 0.90),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       );
     },
