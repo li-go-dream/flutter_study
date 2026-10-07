@@ -24,7 +24,18 @@ Future<bool?> customDialog(
             // content
             Padding(
               padding: EdgeInsets.symmetric(vertical: 32, horizontal: 24),
-              child: Center(child: Text(par.content, style: par.contentStyle)),
+              child: Column(
+                children: [
+                  Center(child: Text(par.content, style: par.contentStyle)),
+                  if (par.desc != null)
+                    ...[
+                      const SizedBox(height: 8),
+                      Center(child: Text(par.desc!, style: par.descStyle))
+                    ],
+                  if (par.descWidget != null)
+                    par.descWidget!
+                ],
+              ),
             ),
             Row(
               children: [
