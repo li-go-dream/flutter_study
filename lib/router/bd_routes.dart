@@ -4,6 +4,7 @@ import 'package:study/pages/bd/customer/index.dart';
 import 'package:study/pages/bd/my/index.dart';
 import 'package:study/pages/bd/task/detail/index.dart';
 import 'package:study/pages/bd/task/index.dart';
+import 'package:study/pages/bd/task/record/index.dart';
 
 List<RouteBase> get bdRoutes {
   return [
@@ -95,10 +96,17 @@ List<RouteBase> get bdRoutes {
     ),
     GoRoute(
       path: '/bd/home/detail/:id',
-      builder: ((context, state) {
+      builder: (context, state) {
         final id = state.pathParameters['id'] ?? '';
         return TaskDetail(id: id);
-      })
+      }
+    ),
+    GoRoute(
+        path: '/bd/home/record/:id',
+      builder: (context, state) {
+        final id = state.pathParameters['id'] ?? '';
+        return TaskRecord(id: id);
+      }
     )
   ];
 }
