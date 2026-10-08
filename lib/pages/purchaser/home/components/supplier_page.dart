@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:study/common/user/index.dart';
+import 'package:study/components/scroll_load.dart';
 import 'package:study/pages/purchaser/components/page_tab.dart';
+import 'package:study/pages/purchaser/components/supplier_item.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class SupplierPage extends StatefulWidget {
@@ -20,14 +22,14 @@ class _SupplierPageState extends State<StatefulWidget>
       hot: true,
       hotNumber: 12,
       type: 'supplier',
-      page: Text('1'),
+      page: const ListPage(),
     ),
     ListItem(
       title: '审核驳回',
       hot: false,
       hotNumber: 0,
       type: 'supplier',
-      page: Text('2'),
+      page: const GoodsPage(),
     ),
   ];
 
@@ -60,5 +62,95 @@ class _SupplierPageState extends State<StatefulWidget>
     // }
     // // 未加载时也可以显示空白，但此处可放占位
     // return const Center(child: Text('等待加载...'));
+  }
+}
+
+// 未提交审核
+class ListPage extends StatefulWidget {
+  const ListPage({super.key});
+
+  @override
+  State<ListPage> createState() => _ListPageState();
+}
+
+class _ListPageState extends State<ListPage>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+  bool hasMore = true;
+  bool loading = false;
+  bool isloaded = false; // 是否加载过
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return VisibilityDetector(
+      key: const Key('await_supplier_pass'),
+      child: _buildContent(),
+      onVisibilityChanged: (info) {
+        // 当可见面积 > 10% 且未加载时，触发请求
+        if (info.visibleFraction > 0.1 && !isloaded) {
+          isloaded = true;
+          debugPrint('未提交审核加载中');
+        }
+      },
+    );
+  }
+
+  Widget _buildContent() {
+    return ScrollLoad(
+      loading: loading,
+      hasMore: loading,
+      list: [1, 2, 3, 4],
+      loadFn: () {},
+      renderItem: (item) {
+        return SupplierItem();
+      },
+    );
+  }
+}
+
+// 审核驳回
+class GoodsPage extends StatefulWidget {
+  const GoodsPage({super.key});
+
+  @override
+  State<GoodsPage> createState() => _GoodsPageState();
+}
+
+class _GoodsPageState extends State<GoodsPage>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+  bool hasMore = true;
+  bool loading = false;
+  bool isloaded = false; // 是否加载过
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return VisibilityDetector(
+      key: const Key('supplier_pass_reject'),
+      child: _buildContent(),
+      onVisibilityChanged: (info) {
+        // 当可见面积 > 10% 且未加载时，触发请求
+        if (info.visibleFraction > 0.1 && !isloaded) {
+          isloaded = true;
+          debugPrint('审核加载中');
+        }
+      },
+    );
+  }
+
+  Widget _buildContent() {
+    return ScrollLoad(
+      loading: loading,
+      hasMore: loading,
+      list: [1, 2, 3],
+      loadFn: () {},
+      renderItem: (item) {
+        return SupplierItem(operationType: '2');
+      },
+    );
   }
 }

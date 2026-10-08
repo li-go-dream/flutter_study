@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:study/common/user/index.dart';
 
 class PurchaserWorkBenchPage extends StatelessWidget {
@@ -28,7 +29,7 @@ class PurchaserWorkBenchPage extends StatelessWidget {
     WorkBenchItem(
       title: '售后管理',
       desc: '方便快捷',
-      url: '、afterSalesManagement',
+      url: '/afterSalesManagement',
       img: 'assets/images/shouhou.png',
       color: Color(0xFFFFF1F1),
     ),
@@ -89,7 +90,7 @@ class PurchaserWorkBenchPage extends StatelessWidget {
                           fit: .tight,
                           child: InkWell(
                             onTap: () {
-                              debugPrint('点击了${item.url}');
+                              context.push('purchaser${item.url}');
                             },
                             child: DecoratedBox(
                               decoration: BoxDecoration(

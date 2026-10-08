@@ -138,7 +138,7 @@ class _GoodsPageState extends State<GoodsPage>
       list: [1, 2, 3],
       loadFn: () {},
       renderItem: (item) {
-        return Text('$item', style: TextStyle(height: 20));
+        return GoodsItem(operationType: '2');
       },
     );
   }
