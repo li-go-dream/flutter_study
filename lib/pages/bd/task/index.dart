@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:study/common/data/index.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
@@ -193,10 +194,15 @@ class _BdTaskPageState extends State<BdTaskPage>
                               },
                             ),
                             const SizedBox(width: 12),
-                            Icon(
-                              Icons.add_circle_outline_outlined,
-                              size: 24,
-                              color: Color(0xFF1D2129),
+                            GestureDetector(
+                              onTap: () {
+                                context.push('/bd/home/create');
+                              },
+                              child: Icon(
+                                Icons.add_circle_outline_outlined,
+                                size: 24,
+                                color: Color(0xFF1D2129),
+                              ),
                             ),
                           ],
                         ),

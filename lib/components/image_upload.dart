@@ -12,11 +12,13 @@ class ImageUpload extends StatefulWidget {
   final int limit;
   final List<ImageItem?> list;
   final void Function(List<ImageItem?>)? imgsChange;
+  final bool isEdit;
   const ImageUpload({
     super.key,
     this.limit = 1,
     this.list = const [],
     this.imgsChange,
+    this.isEdit = true,
   });
 
   @override
@@ -142,26 +144,26 @@ class _ImageUpload extends State<ImageUpload> {
                       ),
                     ),
                   ),
-
-                Positioned(
-                  top: 4,
-                  right: 4,
-                  child: InkWell(
-                    onTap: () {
-                      deleteImages(item);
-                    },
-                    child: CircleAvatar(
-                      radius: 9, // 直径 18
-                      backgroundColor: const Color.fromRGBO(0, 0, 0, 0.5),
-                      child: Icon(Icons.close, size: 12, color: Colors.white),
+                if (widget.isEdit)
+                  Positioned(
+                    top: 4,
+                    right: 4,
+                    child: InkWell(
+                      onTap: () {
+                        deleteImages(item);
+                      },
+                      child: CircleAvatar(
+                        radius: 9, // 直径 18
+                        backgroundColor: const Color.fromRGBO(0, 0, 0, 0.5),
+                        child: Icon(Icons.close, size: 12, color: Colors.white),
+                      ),
                     ),
                   ),
-                ),
               ],
             ),
           );
         }),
-        if (widget.limit > list.length)
+        if (widget.limit > list.length && widget.isEdit)
           InkWell(
             onTap: () {
               chooseImages(context);
