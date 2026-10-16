@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:study/pages/bd/customer/detail/index.dart';
 import 'package:study/pages/bd/customer/index.dart';
 import 'package:study/pages/bd/my/index.dart';
 import 'package:study/pages/bd/task/create/index.dart';
@@ -110,5 +111,12 @@ List<RouteBase> get bdRoutes {
       },
     ),
     GoRoute(path: '/bd/home/create', builder: (context, state) => CreateTask()),
+    GoRoute(
+      path: '/bd/customer/detail/:id',
+      builder: (context, state) {
+        final id = state.pathParameters['id'] ?? '';
+        return BdCustomerDetail(id: id);
+      },
+    ),
   ];
 }
