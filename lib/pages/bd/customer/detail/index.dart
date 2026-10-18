@@ -57,30 +57,30 @@ class _BdCustomerDetailState extends State<BdCustomerDetail> {
       body: SafeArea(
         child: Column(
           children: [
-            CommonTab(
-              labelStyle: TextStyle(
-                fontSize: 16,
-                fontWeight: .w400,
-                color: Color(0xFF000000),
-              ),
-              selectlabelstyle: TextStyle(
-                fontSize: 16,
-                fontWeight: .w600,
-                color: Color(0xFF3D7EFF),
-              ),
-              hasBottomBorder: false,
-              indicatorColor: 0xFF3D7EFF,
-              list: tabList,
-              tabChange: (int v) {
-                setState(() {
-                  currentIndex = v;
-                });
-              },
-            ),
+            // CommonTab(
+            //   labelStyle: TextStyle(
+            //     fontSize: 16,
+            //     fontWeight: .w400,
+            //     color: Color(0xFF000000),
+            //   ),
+            //   selectlabelstyle: TextStyle(
+            //     fontSize: 16,
+            //     fontWeight: .w600,
+            //     color: Color(0xFF3D7EFF),
+            //   ),
+            //   hasBottomBorder: false,
+            //   indicatorColor: 0xFF3D7EFF,
+            //   list: tabList,
+            //   tabChange: (int v) {
+            //     setState(() {
+            //       currentIndex = v;
+            //     });
+            //   },
+            // ),
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
-                  margin: const EdgeInsets.symmetric(vertical: 12),
+                  // margin: const EdgeInsets.symmetric(vertical: 12),
                   child: Column(
                     children: [
                       TaskItem(type: 4),
@@ -741,6 +741,60 @@ class _BdCustomerDetailState extends State<BdCustomerDetail> {
                     ],
                   ),
                 ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(width: 1, color: Color(0xFFE5E6EB)),
+                ),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 9),
+                      decoration: BoxDecoration(
+                        color: Color.fromRGBO(61, 126, 255, 0.15),
+                        borderRadius: BorderRadius.horizontal(
+                          left: Radius.circular(8),
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          '销售信息',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: .w400,
+                            color: Color(0xFF3D7EFF),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 9),
+                      decoration: BoxDecoration(
+                        color: Color(0xFF3D7EFF),
+                        borderRadius: BorderRadius.horizontal(
+                          right: Radius.circular(8),
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          '售后信息',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: .w400,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

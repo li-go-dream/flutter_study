@@ -118,5 +118,6 @@ List<RouteBase> get bdRoutes {
         return BdCustomerDetail(id: id);
       },
     ),
+    GoRoute(path: '/bd/customer/my', builder: (context, state) => BdMyPage()),
   ];
 }

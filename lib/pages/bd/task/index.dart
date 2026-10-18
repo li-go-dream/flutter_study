@@ -145,6 +145,7 @@ class _BdTaskPageState extends State<BdTaskPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFf2f3f6),
       body: Stack(
         children: [
           Positioned(
