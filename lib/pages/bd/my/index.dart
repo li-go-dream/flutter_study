@@ -113,55 +113,108 @@ class _BdMyPageState extends State<BdMyPage> {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: Row(
-                              mainAxisAlignment: .spaceEvenly,
+                            child: Column(
                               children: [
-                                Column(
+                                Row(
+                                  mainAxisAlignment: .spaceEvenly,
                                   children: [
-                                    Text(
-                                      '50',
-                                      style: TextStyle(
-                                        fontSize: 24,
-                                        fontWeight: .w700,
-                                        color: Color(0xFF1D2129),
-                                      ),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          '50',
+                                          style: TextStyle(
+                                            fontSize: 24,
+                                            fontWeight: .w700,
+                                            color: Color(0xFF1D2129),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          '今日拜访',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: .w400,
+                                            color: Color(0xFF999999),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    const SizedBox(height: 5),
-                                    Text(
-                                      '今日拜访',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: .w400,
-                                        color: Color(0xFF999999),
-                                      ),
+                                    Container(
+                                      height: 24,
+                                      width: 1,
+                                      color: Color(0xFFE7E7E7),
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          '15',
+                                          style: TextStyle(
+                                            fontSize: 24,
+                                            fontWeight: .w700,
+                                            color: Color(0xFF1D2129),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          '今日拜访',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: .w400,
+                                            color: Color(0xFF999999),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Container(
+                                      height: 24,
+                                      width: 1,
+                                      color: Color(0xFFE7E7E7),
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          '15',
+                                          style: TextStyle(
+                                            fontSize: 24,
+                                            fontWeight: .w700,
+                                            color: Color(0xFF1D2129),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          '线索添加',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: .w400,
+                                            color: Color(0xFF999999),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                                Container(
-                                  height: 24,
-                                  width: 1,
-                                  color: Color(0xFFE7E7E7),
-                                ),
-                                Column(
-                                  children: [
-                                    Text(
-                                      '15',
-                                      style: TextStyle(
-                                        fontSize: 24,
-                                        fontWeight: .w700,
-                                        color: Color(0xFF1D2129),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    margin: const EdgeInsets.only(top: 20),
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 8,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Color(0xFF3D7EFF),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        '去执行',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: .w400,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
-                                    const SizedBox(height: 5),
-                                    Text(
-                                      '今日拜访',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: .w400,
-                                        color: Color(0xFF999999),
-                                      ),
-                                    ),
-                                  ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -240,6 +293,152 @@ class _BdMyPageState extends State<BdMyPage> {
                                       ],
                                     ),
                                   ],
+                                ),
+                                const SizedBox(height: 12),
+                                IntrinsicHeight(
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment: .start,
+                                          children: [
+                                            Text(
+                                              '下单金额(元)',
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: .w400,
+                                                color: Color(0xFF999999),
+                                              ),
+                                            ),
+                                            const SizedBox(height: 8),
+                                            Text(
+                                              '45,198.09',
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: .w700,
+                                                color: Color(0xFF1D2129),
+                                              ),
+                                            ),
+                                            const SizedBox(height: 8),
+                                            Row(
+                                              mainAxisAlignment: .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  '较昨日',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: .w400,
+                                                    color: Color(0xFF999999),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  '+4.82%',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: .w500,
+                                                    color: Color(0xFFF53F3F),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  '较上周同期',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: .w400,
+                                                    color: Color(0xFF999999),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  '-8.50%',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: .w500,
+                                                    color: Color(0xFF30A056),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      const VerticalDivider(
+                                        width: 33, // 占位宽度（含 margin）
+                                        thickness: 1, // 线宽
+                                        color: Color(0xFFE7E7E7),
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment: .start,
+                                          children: [
+                                            Text(
+                                              '下单金额(元)',
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: .w400,
+                                                color: Color(0xFF999999),
+                                              ),
+                                            ),
+                                            const SizedBox(height: 8),
+                                            Text(
+                                              '45,198.09',
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: .w700,
+                                                color: Color(0xFF1D2129),
+                                              ),
+                                            ),
+                                            const SizedBox(height: 8),
+                                            Row(
+                                              mainAxisAlignment: .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  '较昨日',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: .w400,
+                                                    color: Color(0xFF999999),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  '+4.82%',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: .w500,
+                                                    color: Color(0xFFF53F3F),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisAlignment: .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  '较上周同期',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: .w400,
+                                                    color: Color(0xFF999999),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  '-8.50%',
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: .w500,
+                                                    color: Color(0xFF30A056),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
