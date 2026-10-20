@@ -2,7 +2,6 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:study/common/data/bd/echart.dart';
 import 'package:study/common/data/index.dart';
-import 'package:study/components/common_tab.dart';
 import 'package:study/components/page_bar.dart';
 import 'package:study/pages/bd/task/components/task_item.dart';
 
