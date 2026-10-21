@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:go_router/go_router.dart';
 import 'package:study/common/data/bd/echart.dart';
+import 'package:study/common/dialog/index.dart';
+import 'package:study/components/custom_alert.dart';
 
 class TimeItem {
   final int id;
@@ -84,6 +89,23 @@ class _BdMyPageState extends State<BdMyPage> {
     });
   }
 
+  void handleInvitationCode(BuildContext context) {
+    customDialog(
+      context,
+      DialogPar(
+        content: '邀请码：6GYx4',
+        cancelText: '取消',
+        okText: '复制',
+        okColor: 0xFF3D7EFF,
+      ),
+      (destory, val) async {
+        await Clipboard.setData(ClipboardData(text: '6GYx4'));
+        Fluttertoast.showToast(msg: '复制成功', gravity: .CENTER);
+        destory(val);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -126,7 +148,9 @@ class _BdMyPageState extends State<BdMyPage> {
                           spacing: 24,
                           children: [
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                handleInvitationCode(context);
+                              },
                               child: Text(
                                 '我的邀请码',
                                 style: TextStyle(
@@ -137,7 +161,9 @@ class _BdMyPageState extends State<BdMyPage> {
                               ),
                             ),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                context.push('/bd/customer/setting');
+                              },
                               child: Icon(
                                 Icons.settings_outlined,
                                 size: 24,
@@ -663,6 +689,46 @@ class _BdMyPageState extends State<BdMyPage> {
                                                 ),
                                               )
                                               .toList(),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 16),
+                                Row(
+                                  spacing: 24,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 16,
+                                          height: 1,
+                                          color: Color(0XFF30A056),
+                                        ),
+                                        Text(
+                                          '下单金额(元)',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: .w400,
+                                            color: Color(0xFF666666),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 16,
+                                          height: 1,
+                                          color: Color(0XFF3D7EFF),
+                                        ),
+                                        Text(
+                                          '下单客户数(家)',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: .w400,
+                                            color: Color(0xFF666666),
+                                          ),
                                         ),
                                       ],
                                     ),

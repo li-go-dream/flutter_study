@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:study/pages/bd/customer/detail/index.dart';
 import 'package:study/pages/bd/customer/index.dart';
 import 'package:study/pages/bd/my/index.dart';
+import 'package:study/pages/bd/my/setting/index.dart';
 import 'package:study/pages/bd/task/create/index.dart';
 import 'package:study/pages/bd/task/detail/index.dart';
 import 'package:study/pages/bd/task/index.dart';
@@ -119,5 +120,9 @@ List<RouteBase> get bdRoutes {
       },
     ),
     GoRoute(path: '/bd/customer/my', builder: (context, state) => BdMyPage()),
+    GoRoute(
+      path: '/bd/customer/setting',
+      builder: (context, state) => BdMySetting(),
+    ),
   ];
 }
